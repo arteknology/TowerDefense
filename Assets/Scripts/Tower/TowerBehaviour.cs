@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,11 +10,17 @@ public class TowerBehaviour : MonoBehaviour
 
     [SerializeField] private float _range;
     [SerializeField] private Transform _turret;
+    [SerializeField] private float attack_speed;
+    [SerializeField] private ProjectileBehaviour _projectile;
  
     private Collider2D _target;
+    private float current_time;
+
     private const float turret_rotation_speed = 8f;
+
     private void Start()
     {
+        current_time = 0f;
     }
 
     private void OnDrawGizmos()
@@ -38,15 +45,36 @@ public class TowerBehaviour : MonoBehaviour
         return isInRange;
     }
 
+    private void Fire()
+    {
+        current_time = current_time - attack_speed;
+
+        ProjectileBehaviour bullet = GameObject.Instantiate(_projectile);
+        bullet.transform.position = _turret.position;
+        bullet.Init(_target.transform);
+
+    }
+
     private void Update()
     {
         if (_target == null || !IsInRange(_target.transform))
         {
             _target = NearestTarget;
         }
+
+        current_time += Time.deltaTime;
+
         if (_target != null)
         {
             FollowTarget();
+            if (current_time >= attack_speed)
+            {
+                Fire();
+            }
+        }
+        else if (current_time >= attack_speed)
+        {
+            current_time = attack_speed;
         }
     }
 }
