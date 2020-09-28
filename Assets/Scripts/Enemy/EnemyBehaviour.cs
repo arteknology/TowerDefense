@@ -38,4 +38,11 @@ public class EnemyBehaviour : MonoBehaviour
                 break;
         }
     }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (!col.gameObject.CompareTag("Projectile")) return;
+
+        GameObject.Destroy(col.gameObject);
+    }
 }

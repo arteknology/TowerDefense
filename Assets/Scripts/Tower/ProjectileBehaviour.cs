@@ -19,11 +19,4 @@ public class ProjectileBehaviour : MonoBehaviour
     {
         transform.position = transform.position + (_target.position - transform.position) * Time.deltaTime * _speed;
     }
-
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (!col.gameObject.CompareTag("Enemy")) return;
-    }
-    
-
 }
