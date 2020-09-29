@@ -373,3 +373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _range: 5
   _turret: {fileID: 3950771772935152450}
+  attack_speed: 1
+  ready_time: 0.3
+  _projectile: {fileID: 3091198434135413311, guid: d7ac253cfa4983140af797cb6909eab1,
+    type: 3}

@@ -11,6 +11,8 @@ public class TowerBehaviour : MonoBehaviour
     [SerializeField] private float _range;
     [SerializeField] private Transform _turret;
     [SerializeField] private float attack_speed;
+    [SerializeField] private float ready_time;
+
     [SerializeField] private ProjectileBehaviour _projectile;
  
     private Collider2D _target;
@@ -74,7 +76,7 @@ public class TowerBehaviour : MonoBehaviour
         }
         else if (current_time >= attack_speed)
         {
-            current_time = attack_speed;
+            current_time = attack_speed - ready_time;
         }
     }
 }
