@@ -11,7 +11,7 @@ public class TowerBehaviour : MonoBehaviour
     private float _range;
     private float attack_speed;
     private float ready_time;
-    public int Cost;
+    [NonSerialized]public int Cost;
 
     private Projectiles _projectile;
     private ProjectileBehaviour projectile_template;

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d070f0f05d4e214180da24b0d330945, type: 3}
+  m_Name: BasicTower
+  m_EditorClassIdentifier: 
+  Damage: 1
+  AttackSpeed: 0.8
+  ReadyTime: 0.4
+  Range: 5
+  Cost: 5
+  BaseSprite: {fileID: -3130630996254395869, guid: 1bc90483d752f8f479fef5fd7fb14e8e,
+    type: 3}
+  BaseColor: {r: 1, g: 1, b: 1, a: 1}
+  FreezeRotation: 0
+  Turret: {fileID: -4344577737583370138, guid: 1bc90483d752f8f479fef5fd7fb14e8e, type: 3}
+  TurretColor: {r: 1, g: 1, b: 1, a: 1}
+  projectile: {fileID: 11400000, guid: 73cb7fca621b8b3418647f11a92b4537, type: 2}
+  projectile_template: {fileID: 3091198434135413311, guid: d7ac253cfa4983140af797cb6909eab1,
+    type: 3}
