@@ -7,7 +7,7 @@ public class ProjectileBehaviour : MonoBehaviour
 {
     private Transform _target;
     private float _speed = 5f;
-
+    private Vector3 dead_target;
 
     public void Init(Transform target)
     {
@@ -17,6 +17,9 @@ public class ProjectileBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = transform.position + (_target.position - transform.position) * Time.deltaTime * _speed;
+        dead_target = _target.position;
+
+        transform.position = transform.position + 
+            ((_target == null ? dead_target : _target.position) - transform.position) * Time.deltaTime * _speed;
     }
 }

@@ -245,9 +245,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d7adc497c3a1744aef1cf5e2857ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy_count: 2
-  enemy_interval: 2
-  _enemy: {fileID: 6626019878872531305, guid: 4e9e8188c671e7d409283c52966ea607, type: 3}
+  waves:
+  - {fileID: 11400000, guid: e3c9ba387f915af4fb81ab2e3205c3e2, type: 2}
+  - {fileID: 11400000, guid: 59916b9792a667840b445ceb44f7ccaf, type: 2}
   start_direction: 0
 --- !u!1 &247544686
 GameObject:
@@ -1782,9 +1782,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d7adc497c3a1744aef1cf5e2857ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy_count: 2
-  enemy_interval: 2
-  _enemy: {fileID: 6626019878872531305, guid: 4e9e8188c671e7d409283c52966ea607, type: 3}
+  waves:
+  - {fileID: 11400000, guid: e3c9ba387f915af4fb81ab2e3205c3e2, type: 2}
+  - {fileID: 11400000, guid: 59916b9792a667840b445ceb44f7ccaf, type: 2}
   start_direction: 1
 --- !u!1 &1849288236
 GameObject:
@@ -2015,6 +2015,11 @@ PrefabInstance:
         type: 3}
       propertyPath: attack_speed
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3950771772935152448, guid: 531927c07e206c94c89aa0e565e767c6,
+        type: 3}
+      propertyPath: ready_time
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 3950771772935152451, guid: 531927c07e206c94c89aa0e565e767c6,
         type: 3}

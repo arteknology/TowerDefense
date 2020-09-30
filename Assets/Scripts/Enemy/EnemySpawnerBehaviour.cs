@@ -4,42 +4,58 @@ using UnityEngine;
 
 public class EnemySpawnerBehaviour : MonoBehaviour
 {
-    [SerializeField]
-    private int enemy_count;
+    [SerializeField] private Wave[] waves;
+    [SerializeField] private DirectionEnum start_direction;
 
-    [SerializeField]
-    private float enemy_interval;
-
-    [SerializeField]
-    private EnemyBehaviour _enemy;
-
-    [SerializeField]
-    private DirectionEnum start_direction;
-
+    private int current_wave;
     private int current_count;
     private float current_interval;
+    private bool _active;
+
+    private void Start()
+    {
+        current_wave = 0;
+        current_count = 0;
+        current_interval = 0f;
+        _active = true;
+    }
 
     private void SpawnEnemy()
     {
-        GameObject obj = GameObject.Instantiate(_enemy.gameObject);
+        GameObject obj = GameObject.Instantiate(waves[current_wave].EnemyTemplate.gameObject);
         obj.transform.position = transform.position;
-        obj.GetComponent<EnemyBehaviour>().ChangeDirection(start_direction);
+        EnemyBehaviour behaviour = obj.GetComponent<EnemyBehaviour>();
+        behaviour.Init(waves[current_wave]._enemy);
+        behaviour.ChangeDirection(start_direction);
     }
 
     private void Update()
     {
-        if(current_count == enemy_count)
+        if (_active)
         {
-            gameObject.SetActive(false);
+            if (current_count == waves[current_wave].EnemyCount)
+            {
+                _active = false;
+            }
+
+            current_interval += Time.deltaTime;
+
+            if (current_interval >= waves[current_wave].Interval)
+            {
+                SpawnEnemy();
+                current_count++;
+                current_interval = current_interval - waves[current_wave].Interval;
+            }
         }
 
-        current_interval += Time.deltaTime;
-
-        if(current_interval >= enemy_interval)
+        else
         {
-            SpawnEnemy();
-            current_count++;
-            current_interval = current_interval - enemy_interval;
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Targetable");
+            if(enemies.Length == 0)
+            {
+                _active = true;
+                current_wave += 1;
+            }
         }
     }
 }

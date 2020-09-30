@@ -4,13 +4,27 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    [SerializeField]
-    private float _speed;
-
     private Vector3 Direction;
-    // Start is called before the first frame update
-    void Start()
+
+    private float max_life;
+    private float current_life;
+    private float _speed;
+    public int _gold;
+    public int _value;
+
+    public void Init(Enemy enemy)
     {
+        transform.localScale = new Vector3(enemy.Size, enemy.Size, 1f);
+
+        SpriteRenderer _renderer = GetComponent<SpriteRenderer>();
+        _renderer.sprite = enemy.Tsprite;
+        _renderer.color = enemy.color;
+
+        max_life = enemy.Life;
+        current_life = max_life;
+        _speed = enemy.MoveSpeed;
+        _gold = enemy.Gold;
+        _value = enemy.Value;
 
     }
 
