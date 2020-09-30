@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wave2
   m_EditorClassIdentifier: 
   _enemy: {fileID: 11400000, guid: eea5ab00781abd040ad3a1d529211db7, type: 2}
-  EnemyTemplate: {fileID: 6626019878872531305, guid: 4e9e8188c671e7d409283c52966ea607,
+  EnemyTemplate: {fileID: 8265239250160319098, guid: 40da4ce67046b4e4db7ba0a064cf9b07,
     type: 3}
   EnemyCount: 8
   Interval: 2.5

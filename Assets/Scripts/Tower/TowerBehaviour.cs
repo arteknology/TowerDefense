@@ -5,15 +5,19 @@ using UnityEngine;
 
 public class TowerBehaviour : MonoBehaviour
 {
-
     public Collider2D NearestTarget => Physics2D.OverlapCircle(transform.position, _range);
 
-    [SerializeField] private float _range;
-    [SerializeField] private Transform _turret;
-    [SerializeField] private float attack_speed;
-    [SerializeField] private float ready_time;
+    private int _damage;
+    private float _range;
+    private float attack_speed;
+    private float ready_time;
+    public int Cost;
 
-    [SerializeField] private ProjectileBehaviour _projectile;
+    private Projectiles _projectile;
+    private ProjectileBehaviour projectile_template;
+
+    [SerializeField] private GameObject tower_base;
+    [SerializeField] private GameObject tower_turret;
  
     private Collider2D _target;
     private float current_time;
@@ -30,6 +34,27 @@ public class TowerBehaviour : MonoBehaviour
         Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
         Gizmos.DrawWireSphere(transform.position, (_range-0.5f));
     }
+
+    public void Init(Tower tower)
+    {
+        SpriteRenderer base_renderer = tower_base.GetComponent<SpriteRenderer>();
+        base_renderer.sprite = tower.BaseSprite;
+        base_renderer.color = tower.BaseColor;
+
+        SpriteRenderer turret_renderer = tower_turret.GetComponent<SpriteRenderer>();
+        turret_renderer.sprite = tower.Turret;
+        turret_renderer.color = tower.TurretColor;
+
+        _damage = tower.Damage;
+        attack_speed = tower.AttackSpeed;
+        ready_time = tower.ReadyTime;
+        _range = tower.Range;
+        Cost = tower.Cost;
+
+        _projectile = tower.projectile;
+        projectile_template = tower.projectile_template;
+
+    }  
 
     private void FollowTarget()
     {
@@ -51,9 +76,9 @@ public class TowerBehaviour : MonoBehaviour
     {
         current_time = current_time - attack_speed;
 
-        ProjectileBehaviour bullet = GameObject.Instantiate(_projectile);
-        bullet.transform.position = _turret.position;
-        bullet.Init(_target.transform);
+        ProjectileBehaviour bullet = GameObject.Instantiate(projectile_template);
+        bullet.transform.position = tower_turret.transform.position;
+        bullet.Init(_projectile, _target.transform, _damage);
 
     }
 

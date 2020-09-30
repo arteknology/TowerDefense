@@ -57,6 +57,13 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (!col.gameObject.CompareTag("Projectile")) return;
 
-        GameObject.Destroy(col.gameObject);
+        ProjectileBehaviour projectile = col.GetComponent<ProjectileBehaviour>();
+        current_life -= projectile.Damage;
+
+        //TODO: animate enemy taken damage
+
+        if (current_life <= 0) {
+            GameObject.Destroy(col.gameObject);
+        }
     }
 }
