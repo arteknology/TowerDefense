@@ -7,7 +7,7 @@ public class TowerButtonBehaviour : MonoBehaviour
 {
     [SerializeField] private Tower _tower;
     [SerializeField] private Transform _infos;
-    [SerializeField] private TowerBehaviour selected_tower;
+    [SerializeField] private GameObject selected_tower;
     [SerializeField] private PlayerBehaviour _player;
 
 
@@ -26,9 +26,9 @@ public class TowerButtonBehaviour : MonoBehaviour
         mouse_in = false;
     }
 
-    void OnClick()
+    public void OnClick()
     {
-        TowerBehaviour t = GameObject.Instantiate(selected_tower);
+        TowerBehaviour t = Instantiate(selected_tower).GetComponent<TowerBehaviour>();
         t.Init(_tower, true);
         _player.SetSelectedTower(t);
     }
@@ -37,6 +37,11 @@ public class TowerButtonBehaviour : MonoBehaviour
     {
         mouse_in = true;
         _infos.gameObject.SetActive(true);
+        GameObject.Find("CostText").GetComponent<Text>().text = " Cost: " + _tower.Cost;
+        GameObject.Find("DamageText").GetComponent<Text>().text = " Damage: " + _tower.Damage;
+        GameObject.Find("AttackSpeedText").GetComponent<Text>().text = " Attack Speed: " + _tower.AttackSpeed;
+
+
     }
 
     public void OnPointerExit()

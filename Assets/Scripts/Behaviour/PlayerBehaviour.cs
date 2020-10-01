@@ -66,18 +66,19 @@ public class PlayerBehaviour : MonoBehaviour
         if(tower == null && selected_tower != null)
         {
            GameObject.Destroy(selected_tower.gameObject);
-        }
-
+        } 
         selected_tower = tower;
+        Debug.Log("SetTower");
     }
 
     void Update()
     {
         if(selected_tower != null)
         {
+            Debug.Log("selected_tower != null");
             Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mouse.z = 0f;
             selected_tower.transform.position = mouse;
-
             if (Input.GetMouseButtonDown(0))
             {
                 if (Gold >= selected_tower.Cost)

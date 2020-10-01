@@ -77,7 +77,7 @@ public class TowerBehaviour : MonoBehaviour
     {
         float dist = Vector3.Distance(transform.position, point.position);
         bool isInRange = dist <= _range;
-        Debug.Log("Distance : " + dist + " <= " + _range + " " + isInRange);
+        //Debug.Log("Distance : " + dist + " <= " + _range + " " + isInRange);
         return isInRange;
     }
 

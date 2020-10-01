@@ -1473,7 +1473,7 @@ GameObject:
   - component: {fileID: 765314540}
   - component: {fileID: 765314539}
   m_Layer: 5
-  m_Name: Text
+  m_Name: CostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4777,7 +4777,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tower: {fileID: 11400000, guid: ca5476c52a819d04b8a9884285850f6c, type: 2}
   _infos: {fileID: 503791121}
-  selected_tower: {fileID: 3744627647155453740, guid: 531927c07e206c94c89aa0e565e767c6,
+  selected_tower: {fileID: 3950771771667644382, guid: 531927c07e206c94c89aa0e565e767c6,
     type: 3}
   _player: {fileID: 7081580457135667093, guid: a11ae15f55adea945b622f84a2e3584a, type: 3}
 --- !u!114 &1998984601
