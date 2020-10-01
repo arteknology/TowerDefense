@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 1
   AttackSpeed: 0.8
-  ReadyTime: 0.4
+  ReadyTime: 0.6
   Range: 5.2
   Cost: 5
   BaseSprite: {fileID: -696171370325738794, guid: fb6fa5ad03757784599d1fff098d8074,

@@ -19,7 +19,6 @@ public class TowerButtonBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _player = GetComponent<PlayerBehaviour>();
         _button = GetComponent<Button>();
         _text = GetComponentInChildren<Text>();
         _button.onClick.AddListener(OnClick);
@@ -50,7 +49,7 @@ public class TowerButtonBehaviour : MonoBehaviour
     {
         if (mouse_in)
         {
-            _infos.transform.position = Input.mousePosition;
+            _infos.transform.position = Input.mousePosition+new Vector3(1f,-1f,0);
         }
     }
 }

@@ -62,7 +62,7 @@ public class PlayerBehaviour : MonoBehaviour
     }
 
     public void SetSelectedTower(TowerBehaviour tower)
-    {
+    {   
         if(tower == null && selected_tower != null)
         {
            GameObject.Destroy(selected_tower.gameObject);
@@ -75,9 +75,8 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if(selected_tower != null)
         {
-            selected_tower.transform.position = Input.mousePosition;
-            Vector3 mouse = GameObject.FindObjectOfType<Camera>().ScreenToWorldPoint(Input.mousePosition);
-            selected_tower.transform.position = new Vector3(mouse.x, mouse.y, 0f);
+            Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            selected_tower.transform.position = mouse;
 
             if (Input.GetMouseButtonDown(0))
             {

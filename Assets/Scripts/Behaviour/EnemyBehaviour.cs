@@ -61,9 +61,10 @@ public class EnemyBehaviour : MonoBehaviour
         current_life -= projectile.Damage;
 
         //TODO: animate enemy taken damage
+        GameObject.Destroy(col.gameObject);
 
         if (current_life <= 0) {
-            GameObject.Destroy(col.gameObject);
+            GameObject.Destroy(this.gameObject);
         }
     }
 }
