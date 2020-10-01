@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemySpawnerBehaviour : MonoBehaviour
 {
     [SerializeField] private Wave[] waves;
     [SerializeField] private DirectionEnum start_direction;
+    [SerializeField] private Text wave_text;
+
 
     private int current_wave;
     private int current_count;
@@ -18,6 +21,13 @@ public class EnemySpawnerBehaviour : MonoBehaviour
         current_count = 0;
         current_interval = 0f;
         _active = true;
+
+        UpdateWaveText();
+    }
+
+    public void UpdateWaveText()
+    {
+        wave_text.text = " Wave: " + (current_wave + 1);
     }
 
     private void SpawnEnemy()
@@ -55,6 +65,7 @@ public class EnemySpawnerBehaviour : MonoBehaviour
             {
                 _active = true;
                 current_wave += 1;
+                UpdateWaveText();
             }
         }
     }

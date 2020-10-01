@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3950771771667644383}
+  - component: {fileID: 3744627647155453740}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -23,15 +24,31 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3950771771667644382}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7, y: 3.5, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.010553472, w: 0.9999444}
+  m_LocalPosition: {x: -6.9999294, y: 3.493377, z: 0}
   m_LocalScale: {x: 1.3249, y: 1.3249, z: 1.3249}
   m_Children:
   - {fileID: 3950771771774846635}
   - {fileID: 3950771772935152450}
+  - {fileID: 5158564085306628536}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.2090001}
+--- !u!114 &3744627647155453740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3950771771667644382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 830f06f4a0cfd6747a3360f630a1da12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tower_base: {fileID: 3950771771774846634}
+  tower_turret: {fileID: 3950771772935152453}
+  tower_range: {fileID: 4322241824909382012}
 --- !u!1 &3950771771774846634
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,7 +75,7 @@ Transform:
   m_GameObject: {fileID: 3950771771774846634}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7384003, y: 0.7384003, z: 0.7384003}
   m_Children: []
   m_Father: {fileID: 3950771771667644383}
   m_RootOrder: 0
@@ -102,7 +119,7 @@ SpriteRenderer:
   m_SortingLayerID: -2130277663
   m_SortingLayer: -1
   m_SortingOrder: 1
-  m_Sprite: {fileID: -3130630996254395869, guid: 1bc90483d752f8f479fef5fd7fb14e8e,
+  m_Sprite: {fileID: -696171370325738794, guid: fb6fa5ad03757784599d1fff098d8074,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -124,7 +141,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3950771772935152450}
   - component: {fileID: 3950771772935152451}
-  - component: {fileID: 3950771772935152448}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -140,8 +156,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3950771772935152453}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalPosition: {x: -0.079, y: 0.039, z: 0}
+  m_LocalScale: {x: 0.5709803, y: 0.5709803, z: 0.5709803}
   m_Children: []
   m_Father: {fileID: 3950771771667644383}
   m_RootOrder: 1
@@ -185,9 +201,9 @@ SpriteRenderer:
   m_SortingLayerID: -2130277663
   m_SortingLayer: -1
   m_SortingOrder: 3
-  m_Sprite: {fileID: -4344577737583370138, guid: 1bc90483d752f8f479fef5fd7fb14e8e,
+  m_Sprite: {fileID: 3393419752774866597, guid: fb6fa5ad03757784599d1fff098d8074,
     type: 3}
-  m_Color: {r: 0.5294118, g: 0.5294118, b: 0.5294118, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -197,17 +213,84 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3950771772935152448
-MonoBehaviour:
+--- !u!1 &4322241824909382012
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3950771772935152453}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5158564085306628536}
+  - component: {fileID: 2979003248519064396}
+  m_Layer: 0
+  m_Name: Range
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5158564085306628536
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4322241824909382012}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.000000003798, y: 0.00000017991, z: 0}
+  m_LocalScale: {x: 45.92279, y: 45.92279, z: 45.92279}
+  m_Children: []
+  m_Father: {fileID: 3950771771667644383}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &2979003248519064396
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4322241824909382012}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 830f06f4a0cfd6747a3360f630a1da12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tower_base: {fileID: 3950771771774846634}
-  tower_turret: {fileID: 3950771772935152453}
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -1628237305
+  m_SortingLayer: -2
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.20392157}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.2, y: 0.2}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0

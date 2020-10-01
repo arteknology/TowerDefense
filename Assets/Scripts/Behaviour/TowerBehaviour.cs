@@ -15,9 +15,12 @@ public class TowerBehaviour : MonoBehaviour
 
     private Projectiles _projectile;
     private ProjectileBehaviour projectile_template;
+    private bool _placing;
+    private bool _selected;
 
     [SerializeField] private GameObject tower_base;
     [SerializeField] private GameObject tower_turret;
+    [SerializeField] private GameObject tower_range;
  
     private Collider2D _target;
     private float current_time;
@@ -27,6 +30,8 @@ public class TowerBehaviour : MonoBehaviour
     private void Start()
     {
         current_time = 0f;
+        _placing = false;
+        _selected = false;
     }
 
     private void OnDrawGizmos()
@@ -35,7 +40,7 @@ public class TowerBehaviour : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, (_range-0.5f));
     }
 
-    public void Init(Tower tower)
+    public void Init(Tower tower, bool _placing)
     {
         SpriteRenderer base_renderer = tower_base.GetComponent<SpriteRenderer>();
         base_renderer.sprite = tower.BaseSprite;
@@ -51,8 +56,12 @@ public class TowerBehaviour : MonoBehaviour
         _range = tower.Range;
         Cost = tower.Cost;
 
+        this._placing = _placing;
         _projectile = tower.projectile;
         projectile_template = tower.projectile_template;
+
+        tower_range.SetActive(_placing);
+        
 
     }  
 
@@ -84,24 +93,33 @@ public class TowerBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (_target == null || !IsInRange(_target.transform))
+        if (!_placing)
         {
-            _target = NearestTarget;
-        }
-
-        current_time += Time.deltaTime;
-
-        if (_target != null)
-        {
-            FollowTarget();
-            if (current_time >= attack_speed)
+            if (_target == null || !IsInRange(_target.transform))
             {
-                Fire();
+                _target = NearestTarget;
+            }
+
+            current_time += Time.deltaTime;
+
+            if (_target != null)
+            {
+                FollowTarget();
+                if (current_time >= attack_speed)
+                {
+                    Fire();
+                }
+            }
+            else if (current_time >= attack_speed)
+            {
+                current_time = attack_speed - ready_time;
             }
         }
-        else if (current_time >= attack_speed)
-        {
-            current_time = attack_speed - ready_time;
-        }
+    }
+
+    public void Place()
+    {
+        _placing = false;
+        _selected = true;
     }
 }

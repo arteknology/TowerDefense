@@ -15,13 +15,13 @@ MonoBehaviour:
   Damage: 1
   AttackSpeed: 0.8
   ReadyTime: 0.4
-  Range: 5
+  Range: 5.2
   Cost: 5
-  BaseSprite: {fileID: -3130630996254395869, guid: 1bc90483d752f8f479fef5fd7fb14e8e,
+  BaseSprite: {fileID: -696171370325738794, guid: fb6fa5ad03757784599d1fff098d8074,
     type: 3}
   BaseColor: {r: 1, g: 1, b: 1, a: 1}
   FreezeRotation: 0
-  Turret: {fileID: -4344577737583370138, guid: 1bc90483d752f8f479fef5fd7fb14e8e, type: 3}
+  Turret: {fileID: 3393419752774866597, guid: fb6fa5ad03757784599d1fff098d8074, type: 3}
   TurretColor: {r: 1, g: 1, b: 1, a: 1}
   projectile: {fileID: 11400000, guid: 73cb7fca621b8b3418647f11a92b4537, type: 2}
   projectile_template: {fileID: 3091198434135413311, guid: d7ac253cfa4983140af797cb6909eab1,
