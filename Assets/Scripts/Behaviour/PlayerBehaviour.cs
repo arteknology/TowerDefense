@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-    [NonSerialized] public int Gold;
+    [NonSerialized] public int Gold = 12;
     [NonSerialized] public int Lives;
 
 
-    [SerializeField] private int starting_gold;
+    //[SerializeField] private int starting_gold;
     [SerializeField] private int starting_lives;
     [SerializeField] private Text gold_text;
     [SerializeField] private Text lives_text;
@@ -18,20 +18,24 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Start()
     {
-        Gold = starting_gold;
         Lives = starting_lives;
 
         UpdateGoldText();
         UpdateLivesText();
     }
 
-    private void UpdateGoldText()
+    public void UpdateGoldText()
     {
+        if (Gold <= 0)
+        {
+            Gold = 0;
+        }
         gold_text.text = " Gold: " + Gold;
+
     }
 
 
-    private void UpdateLivesText()
+    public void UpdateLivesText()
     {
         lives_text.text = " Lives: " + Lives;
     }
@@ -45,6 +49,7 @@ public class PlayerBehaviour : MonoBehaviour
     public void RemoveGold(int amount)
     {
         AddGold(-amount);
+        Debug.Log(amount);
     }
 
     public void AddLife(int amount)

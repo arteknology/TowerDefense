@@ -9,9 +9,16 @@ public class EnemyBehaviour : MonoBehaviour
     private float max_life;
     private float current_life;
     private float _speed;
+    
     public int _gold;
     public int _value;
 
+    private PlayerBehaviour _player;
+
+    private void Start()
+    {
+        _player =GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
+    }
     public void Init(Enemy enemy)
     {
         transform.localScale = new Vector3(enemy.Size, enemy.Size, 1f);
@@ -64,6 +71,7 @@ public class EnemyBehaviour : MonoBehaviour
         GameObject.Destroy(col.gameObject);
 
         if (current_life <= 0) {
+            _player.AddGold(_value);
             GameObject.Destroy(this.gameObject);
         }
     }

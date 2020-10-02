@@ -8,7 +8,7 @@ public class TowerButtonBehaviour : MonoBehaviour
     [SerializeField] private Tower _tower;
     [SerializeField] private Transform _infos;
     [SerializeField] private GameObject selected_tower;
-    [SerializeField] private PlayerBehaviour _player;
+    [SerializeField] public GameObject Player;
     [SerializeField] private Transform tower_placement;
 
 
@@ -16,31 +16,34 @@ public class TowerButtonBehaviour : MonoBehaviour
     private Button _button;
     private bool mouse_in;
     private Image _image;
+    private TowerBehaviour SelectedTower;
+    private PlayerBehaviour _player;
 
     // Start is called before the first frame update
     void Start()
     {
         _image = GetComponent<Image>();
         _button = GetComponent<Button>();
-        _button.onClick.AddListener(OnClick);
         _infos.gameObject.SetActive(false);
         mouse_in = false;
         _active = false;
+        SelectedTower = selected_tower.GetComponent<TowerBehaviour>();
+        _player = Player.GetComponent<PlayerBehaviour>();
     }
 
     public void OnClick()
     {
         if (!_active)
         {
-            
-            if (_player.Gold >= selected_tower.GetComponent<TowerBehaviour>().Cost)
+            Debug.Log(_player.Gold);
+            if (_player.Gold >= SelectedTower.Cost && _player.Gold != 0)
             {
                 _image.enabled = false;
                 _infos.gameObject.SetActive(false);
-                TowerBehaviour t = Instantiate(selected_tower).GetComponent<TowerBehaviour>();
+                TowerBehaviour t = Instantiate(SelectedTower);
                 t.Init(_tower);
                 t.transform.position = tower_placement.position;
-                _player.RemoveGold(t.Cost);
+                _player.RemoveGold(_tower.Cost);
                 _active = true;
             }
         }

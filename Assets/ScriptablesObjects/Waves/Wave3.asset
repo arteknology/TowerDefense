@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5192e40816c68a74da2c64ab465d0aa1, type: 3}
-  m_Name: Wave2
+  m_Name: Wave3
   m_EditorClassIdentifier: 
-  _enemy: {fileID: 11400000, guid: 56f723a50bc135d4f85baa4436a9339f, type: 2}
+  _enemy: {fileID: 11400000, guid: 8ee5a5335f0ee444ebed037b98d15acc, type: 2}
   EnemyTemplate: {fileID: 8265239250160319098, guid: 40da4ce67046b4e4db7ba0a064cf9b07,
     type: 3}
-  EnemyCount: 5
-  Interval: 2.2
+  EnemyCount: 8
+  Interval: 1.8

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624d14e0edef55547b08f61643a6aa3e, type: 3}
   m_Name: EnemyWave1
   m_EditorClassIdentifier: 
-  Life: 1
+  Life: 3
   Tsprite: {fileID: 6497336046817818733, guid: 0a0c8e02cae3d3b4dbbd503f116df398, type: 3}
   Size: 0.8
   color: {r: 1, g: 1, b: 1, a: 1}
