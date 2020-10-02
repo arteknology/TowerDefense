@@ -16,9 +16,6 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private Text lives_text;
 
 
-    private TowerBehaviour selected_tower;
-
-
     void Start()
     {
         Gold = starting_gold;
@@ -61,38 +58,4 @@ public class PlayerBehaviour : MonoBehaviour
         AddLife(-amount);
     }
 
-    public void SetSelectedTower(TowerBehaviour tower)
-    {   
-        if(tower == null && selected_tower != null)
-        {
-           GameObject.Destroy(selected_tower.gameObject);
-        } 
-        selected_tower = tower;
-        Debug.Log("SetTower");
-    }
-
-    void Update()
-    {
-        if(selected_tower != null)
-        {
-            Debug.Log("selected_tower != null");
-            Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mouse.z = 0f;
-            selected_tower.transform.position = mouse;
-            if (Input.GetMouseButtonDown(0))
-            {
-                if (Gold >= selected_tower.Cost)
-                {
-                    RemoveGold(selected_tower.Cost);
-                    selected_tower.Place();
-                    selected_tower = null;
-                }
-                else
-                {
-                    //Display "pas assez de gold"
-                }
-            }
-
-        }
-    }
 }

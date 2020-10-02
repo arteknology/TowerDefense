@@ -9,45 +9,62 @@ public class TowerButtonBehaviour : MonoBehaviour
     [SerializeField] private Transform _infos;
     [SerializeField] private GameObject selected_tower;
     [SerializeField] private PlayerBehaviour _player;
+    [SerializeField] private Transform tower_placement;
 
 
-    private Text _text;
+    private bool _active;
     private Button _button;
     private bool mouse_in;
-
+    private Image _image;
 
     // Start is called before the first frame update
     void Start()
     {
+        _image = GetComponent<Image>();
         _button = GetComponent<Button>();
-        _text = GetComponentInChildren<Text>();
         _button.onClick.AddListener(OnClick);
         _infos.gameObject.SetActive(false);
         mouse_in = false;
+        _active = false;
     }
 
     public void OnClick()
     {
-        TowerBehaviour t = Instantiate(selected_tower).GetComponent<TowerBehaviour>();
-        t.Init(_tower, true);
-        _player.SetSelectedTower(t);
+        if (!_active)
+        {
+            
+            if (_player.Gold >= selected_tower.GetComponent<TowerBehaviour>().Cost)
+            {
+                _image.enabled = false;
+                _infos.gameObject.SetActive(false);
+                TowerBehaviour t = Instantiate(selected_tower).GetComponent<TowerBehaviour>();
+                t.Init(_tower);
+                t.transform.position = tower_placement.position;
+                _player.RemoveGold(t.Cost);
+                _active = true;
+            }
+        }
     }
 
     public void OnPointerEnter()
     {
-        mouse_in = true;
-        _infos.gameObject.SetActive(true);
-        GameObject.Find("CostText").GetComponent<Text>().text = " Cost: " + _tower.Cost;
-        GameObject.Find("DamageText").GetComponent<Text>().text = " Damage: " + _tower.Damage;
-        GameObject.Find("AttackSpeedText").GetComponent<Text>().text = " Attack Speed: " + _tower.AttackSpeed;
-
-
+        if (!_active)
+        {
+            mouse_in = true;
+            _infos.gameObject.SetActive(true);
+            GameObject.Find("CostText").GetComponent<Text>().text = " Cost: " + _tower.Cost;
+            GameObject.Find("DamageText").GetComponent<Text>().text = " Damage: " + _tower.Damage;
+            GameObject.Find("AttackSpeedText").GetComponent<Text>().text = " Attack Speed: " + _tower.AttackSpeed;
+        }
     }
 
     public void OnPointerExit()
     {
-        mouse_in = false;
-        _infos.gameObject.SetActive(false);
+        if (!_active)
+        {
+            mouse_in = false;
+            _infos.gameObject.SetActive(false);
+        }
     }
 
     void Update()

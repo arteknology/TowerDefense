@@ -15,8 +15,7 @@ public class TowerBehaviour : MonoBehaviour
 
     private Projectiles _projectile;
     private ProjectileBehaviour projectile_template;
-    private bool _placing;
-    private bool _selected;
+
 
     [SerializeField] private GameObject tower_base;
     [SerializeField] private GameObject tower_turret;
@@ -30,8 +29,7 @@ public class TowerBehaviour : MonoBehaviour
     private void Start()
     {
         current_time = 0f;
-        _placing = false;
-        _selected = false;
+
     }
 
     private void OnDrawGizmos()
@@ -40,7 +38,7 @@ public class TowerBehaviour : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, (_range-0.5f));
     }
 
-    public void Init(Tower tower, bool _placing)
+    public void Init(Tower tower)
     {
         SpriteRenderer base_renderer = tower_base.GetComponent<SpriteRenderer>();
         base_renderer.sprite = tower.BaseSprite;
@@ -56,12 +54,8 @@ public class TowerBehaviour : MonoBehaviour
         _range = tower.Range;
         Cost = tower.Cost;
 
-        this._placing = _placing;
         _projectile = tower.projectile;
-        projectile_template = tower.projectile_template;
-
-        tower_range.SetActive(_placing);
-        
+        projectile_template = tower.projectile_template;        
 
     }  
 
@@ -93,8 +87,7 @@ public class TowerBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (!_placing)
-        {
+
             if (_target == null || !IsInRange(_target.transform))
             {
                 _target = NearestTarget;
@@ -114,12 +107,6 @@ public class TowerBehaviour : MonoBehaviour
             {
                 current_time = attack_speed - ready_time;
             }
-        }
     }
 
-    public void Place()
-    {
-        _placing = false;
-        _selected = true;
-    }
 }
